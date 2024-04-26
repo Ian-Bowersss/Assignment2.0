@@ -3,10 +3,13 @@ const products = require(__dirname + '/products.json');
 const express = require('express');
 const app = express();
 
-//2const usersRegData = require(__dirname + '/user_data.json');
+//const usersRegData = require(__dirname + '/user_data.json');
 const fs = require('fs');
 
 let userDataFile = __dirname + '/user_data.json';
+const userData = require(userDataFile);
+
+let userQuantities;
 
 //check is user data file exist
 let usersRegData = {};
@@ -29,11 +32,70 @@ app.all('*', function (request, response, next) {
 });
 
 
-app.post('/processLogin', function (request, response) {
+app.post('/processLogin', function (req, res, next) {
   // Process login form POST and redirect to logged in page if ok, back to login page if not
-  res.json(request.body);
+  //res.json(request.body);
+  console.log(req.body, req.query);
+  // Process login form POST and redirect to invoice in page if ok, back to login page 
+  const params = new URLSearchParams(req.query);
+  params.append('email', req.body.email);
+  const errors = {}; // assume no errors to start
+  if (req.body.email in userData) {
+    // check if the password is correct
+    if (req.body.password == userData[req.body.email].password) {
+      // password ok, send to invoice
+      res.redirect('./invoice.html?' + params.toString());
+      return;
+    } else {
+      errors.password = 'Password incorrect';
+    }
+  } else {
+    errors.email = `user ${req.body.email} does not exist`;
+  }
+  // if errors, send back to login page to fix
+  params.append('errors', JSON.stringify(errors));
+  res.redirect('./login.html?' + params.toString());
+
 });
 
+//process registration form
+app.post('/processRegister', function (req, res, next) {
+  //process login from POST and redirect to invoice, if not back to login
+  console.log(req.body, req.query);
+  // Process registration form POST and redirect to invoice in page if ok, back to registraion page 
+  const params = new URLSearchParams(req.query);
+  params.append('email', req.body.email);
+
+  const errors = {}; // assume no errors to start
+  // validate name
+  
+  // check if email is already taken
+
+  // check if passwords match
+  if (req.body.psw !== req.body.confirmPsw) {
+    errors.passwordMismatch = "Passwords do not match";
+    console.log(errors);
+  }
+
+  // if errors, send back to registration page to fix otherwise send to invoice
+  if (Object.keys(errors).length > 0) {
+    params.append('errors', JSON.stringify(errors));
+    res.redirect('./register.html?' + params.toString());
+  } else {
+    //Save register data
+    let email = req.body.email;
+    userData[email] = {};
+    userData[email].password = req.body.psw;
+    // write user_data JSON to file
+    fs.writeFileSync(userDataFile, JSON.stringify(userData));
+
+    // decrease inventory here ** move to when invoice is created **
+
+    
+    res.redirect('./invoice.html?' + params.toString());
+  }
+
+});
 
 // javascript to define products array
 app.get('/products.json', function (req, res, next) {
@@ -87,7 +149,7 @@ app.post('/process_purchase_form', function (req, res, next) {
   } else {
     upInventory(quantities)
     //redirects to invoice
-    res.redirect('./invoice.html?' + params.toString());
+    res.redirect('./login.html?' + params.toString());
     //remove quantities from products.aval
     for (let i in products) {
       products[i].quantityAvalible -= request.body[`quantity_textbox${i}`];
@@ -129,6 +191,9 @@ function isNonNegInt(q, returnErrors = false) {
   return returnErrors ? errors : (errors.length == 0);
 }
 
+
+
+// please just work lmao 
 
 
 

@@ -1,9 +1,26 @@
 {
-    
+    "dport@hawaii.edu": {
+        "name": "Dan Port",
+        "password": "portspassword"
+    },
+    "kazman@hawaii.edu": {
+        "name": "Rick Kazman",
+        "password": "kazmanpassword"
+    },
     "itm352@hawaii.edu": {
         "name": "ITM 352",
-        "password": "grader",
-        "age": 22
-        
+        "password": "grader"
+    },
+    "ianmattb@yahoo.com": {
+        "password": "xxx"
+    },
+    "xxx": {
+        "password": "yy"
+    },
+    "Landylu@yahoo.com": {
+        "password": "ilike"
+    },
+    "dj": {
+        "password": "pp"
     }
 }

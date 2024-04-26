@@ -1,6 +1,12 @@
 // get the query string into a easy to use object
 const params = (new URL(document.location)).searchParams;
 
+// check if query string has email, if not, send back to login page
+if(!params.has('email')) {
+  alert('You are not logged in');
+  window.location = './login.html?' + params.toString();
+}
+
 let quantities = [];
 // check if the query string has quantities, parse it and convert elements to numbers
 if (params.has('quantities')) {
@@ -19,6 +25,7 @@ window.onload = function () {
       response.json().then(function (json) {
         products = json;
         display_invoice();
+        emailSpan.innerText = params.get('email');
       });
     } else {
       console.log('Network request for products.json failed with response ' + response.status + ': ' + response.statusText);

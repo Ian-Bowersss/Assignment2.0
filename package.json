@@ -13,7 +13,6 @@
     "body-parser": "^1.20.2",
     "express": "^4.19.2"
   },
-  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "git+https://github.com/Ian-Bowersss/Bowers_Ian_Assignment1.git"
