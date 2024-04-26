@@ -1,0 +1,25 @@
+{
+  "name": "assignment1",
+  "version": "1.0.0",
+  "description": "assignment1 template",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "express": "^4.19.2"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Ian-Bowersss/Bowers_Ian_Assignment1.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Ian-Bowersss/Bowers_Ian_Assignment1/issues"
+  },
+  "homepage": "https://github.com/Ian-Bowersss/Bowers_Ian_Assignment1#readme"
+}

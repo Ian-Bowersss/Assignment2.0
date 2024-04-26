@@ -1,0 +1,86 @@
+[
+  {
+    "name" : "Yeezy Sesame",
+    "price" : 220,
+    "image" : "YeezySesame.jpg",
+    "type" : "Adidas shoes",
+    "quantityAvalible":10
+  },
+  {
+    "name" : "Yeezy Cream",
+    "price" : 220,
+    "image" : "YeezyCream.jpg",
+    "type" : "Adidas shoes",
+    "quantityAvalible":10
+  },
+  {
+    "name" : "Yeezy Oreo",
+    "price" : 220,
+    "image" : "YeezyOreo.jpg",
+    "type" : "Adidas shoes",
+    "quantityAvalible":10
+  },
+  {
+    "name" : "Yeezy Beluga",
+    "price" : 220,
+    "image" : "YeezyBeluga.jpg",
+    "type" : "Adidas shoes",
+    "quantityAvalible":10
+  },
+  {
+    "name" : "Yeezy Zebra",
+    "price" : 220,
+    "image" : "YeezyZebra.jpg",
+    "type" : "Adidas shoes",
+    "quantityAvalible":10
+  },
+  {
+    "name" : "Yeezy Black",
+    "price" : 220,
+    "image" : "YeezyBlack.jpg",
+    "type" : "Adidas shoes",
+    "quantityAvalible":10
+  },
+  {
+    "name" : "Jordan UNC",
+    "price" : 550,
+    "image" : "JordanUNC.jpg",
+    "type" : "Nike shoes",
+    "quantityAvalible":10
+  },
+  {
+    "name" : "Jordan Chicago",
+    "price" : 350,
+    "image" : "JordanChicago.jpg",
+    "type" : "Nike shoes",
+    "quantityAvalible":10
+  },
+  {
+    "name" : "Jordan Shadow",
+    "price" : 200,
+    "image" : "JordanShadow.jpg",
+    "type" : "Nike shoes",
+    "quantityAvalible":10
+  },
+  {
+    "name" : "Jordan Travis Scott",
+    "price" : 700,
+    "image" : "JordanTravis.jpg",
+    "type" : "Nike shoes",
+    "quantityAvalible":10
+  },
+  {
+    "name" : "Jordan Pine",
+    "price" : 230,
+    "image" : "JordanPine.jpg",
+    "type" : "Nike shoes",
+    "quantityAvalible":10
+  },
+  {
+    "name" : "Jordan Mauve",
+    "price" : 340,
+    "image" : "JordanMauve.jpg",
+    "type" : "Nike shoes",
+    "quantityAvalible":10
+  }
+]
