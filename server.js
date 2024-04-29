@@ -71,20 +71,18 @@ app.post('/processRegister', function (req, res, next) {
 
   // validate name
   if (!email.includes('@')) {
-    errors.invalidEmail = "Please enter a valid email";
-    console.log(errors);
+    errors.email = "Please enter a valid email";
   }
   
   // check if email is already taken
   
   if (userData.hasOwnProperty(email)) {
-    errors.emailTaken = "Email is already taken";
-    console.log(errors);
+    errors.email = "Email is already taken";
   }
+
   // check if passwords match
   if (req.body.psw !== req.body.confirmPsw) {
-    errors.passwordMismatch = "Passwords do not match";
-    console.log(errors);
+    errors.confirmPsw = "Passwords do not match";
   }
 
   // if errors, send back to registration page to fix otherwise send to invoice

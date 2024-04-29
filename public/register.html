@@ -95,6 +95,10 @@
       margin-bottom: 20px;
       box-shadow: 0 0 5px 1px white;
         }
+        .error-message{
+            color: rgba(255, 55, 0);
+        }
+      
         
     </style>
     <script>
@@ -105,7 +109,33 @@
           errors = JSON.parse(params.get('errors'));
           params.delete('errors');
       }
-      console.log(errors);
+      // Function to display errors
+      function ErrorRegister() {
+            for (let key in errors) {
+                const inputField = document.querySelector(`[name="${key}"]`);
+                const errorSpan = document.createElement('span');
+                errorSpan.textContent = errors[key];
+                errorSpan.classList.add('error-message');
+                inputField.insertAdjacentElement('afterend', errorSpan);
+            }
+        }
+                window.onload = function () {
+                    ErrorRegister();
+                };
+                // Function to generate a random password
+      function generateRandomPassword(length) {
+          const charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+          let password = '';
+          for (let i = 0; i < length; i++) {
+              const randomIndex = Math.floor(Math.random() * charset.length);
+              password += charset[randomIndex];
+          }
+          return password;
+      }
+      const randomPassword = generateRandomPassword(10);
+console.log(randomPassword);
+      
+     
       </script>
 </head>
 <body>
@@ -122,13 +152,16 @@
 
         <label for="email"><b>Email</b></label>
         <input type="text" placeholder="Enter Email" name="email" id="email" required>
-
+<br>
+    </br>  
         <label for="psw"><b>Password</b></label>
         <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
-
+<br>
+</br>
         <label for="confirmPsw"><b>Repeat Password</b></label>
         <input type="password" placeholder="Repeat Password" name="confirmPsw" id="confirmPsw" required>
-
+<br>
+</br>
         <hr>
 
         <button type="submit" class="registerbtn">Register</button>

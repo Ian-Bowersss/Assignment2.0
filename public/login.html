@@ -1,15 +1,16 @@
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <style>
         /* Container for the whole login form */
-        body{
-          background-color: rgba(0, 0, 0, 0.532);
+        body {
+            background-color: rgba(0, 0, 0, 0.532);
         }
+
         .login-container {
             max-width: 500px;
             margin: 0 auto;
@@ -24,18 +25,19 @@
 
         /* Center the avatar image inside this container */
         .avatar {
-          border: 1px solid #ddd;
-      border-radius: 4px;
-      padding: 5px;
-      width: 250px;
-      margin-bottom: 20px;
-      box-shadow: 0 0 5px 1px white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 5px;
+            width: 250px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 5px 1px white;
 
         }
-        
+
 
         /* Full-width inputs */
-        input[type=text], input[type=password] {
+        input[type=text],
+        input[type=password] {
             width: 100%;
             padding: 12px;
             margin: 8px 0;
@@ -68,7 +70,7 @@
         .container {
             padding: 0 20px;
             margin-top: 50px;
-            
+
         }
 
         /* The "Forgot password" text */
@@ -79,8 +81,8 @@
             font-size: 18px;
             position: relative;
             top: 15px;
-            
-            
+
+
         }
 
         /* Clear floats after the cancel button */
@@ -103,42 +105,67 @@
             color: #04aa44;
             text-decoration: none;
         }
+        .error-message{
+            color: rgb(255, 55, 0);
+            
+        }
     </style>
     <script>
-      // get the query string into a easy to use object
-      const params = (new URL(document.location)).searchParams;
-      let errors = {};
-      if(params.has('errors')) {
-          errors = JSON.parse(params.get('errors'));
-          params.delete('errors');
-      }
-      console.log(errors);
-      </script>
+        // get the query string into a easy to use object
+        const params = (new URL(document.location)).searchParams;
+        let errors = {};
+        if (params.has('errors')) {
+            errors = JSON.parse(params.get('errors'));
+            params.delete('errors');
+        }
+        function ErrorLogin() {
+            for (let key in errors) {
+                const inputField = document.querySelector(`[name="${key}"]`);
+                const errorSpan = document.createElement('span');
+                errorSpan.textContent = errors[key];
+                errorSpan.classList.add('error-message');
+                inputField.insertAdjacentElement('afterend', errorSpan);
+            }
+        }
+        
+                window.onload = function () {
+                    ErrorLogin();
+                };
+            
+    </script>
+
+
 </head>
+
 <body>
-  <script>
-    document.write(`<form action="processLogin?${params.toString()}" method="POST">`);
-</script>
+    <script>
+        document.write(`<form action="processLogin?${params.toString()}" method="POST">`);
+    </script>
     <div class="login-container">
         <img src="./images/NikeAdidas.jpg" alt="Avatar" class="avatar">
         <form action="processLogin" method="POST">
             <div class="container">
                 <label for="email"><b>Email</b></label>
                 <input type="text" placeholder="Enter Email" name="email" required>
-    
+                <br>
+            </br>
                 <label for="psw"><b>Password</b></label>
                 <input type="password" placeholder="Enter Password" name="password" required>
-    
+
                 <button type="submit">Login</button>
-                
+
             </div>
-    
+
             <div class="container" style="background-color: rgba(0, 0, 0, 0)">
-              <button type="button" class="cancelbtn">Cancel</button>
-              
-              <span class="psw">Dont have an account? <script>document.write(`<a href="register.html?${params.toString()}">Register</a>`)</script></span>
+                <button type="button" class="cancelbtn">Cancel</button>
+
+                <span class="psw">Dont have an account?
+                    <script>document.write(`<a href="register.html?${params.toString()}">Register</a>`)</script>
+                </span>
             </div>
+           
         </form>
     </div>
 </body>
+
 </html>
