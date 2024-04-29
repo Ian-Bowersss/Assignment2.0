@@ -65,12 +65,22 @@ app.post('/processRegister', function (req, res, next) {
   // Process registration form POST and redirect to invoice in page if ok, back to registraion page 
   const params = new URLSearchParams(req.query);
   params.append('email', req.body.email);
+  const email = req.body.email;
 
   const errors = {}; // assume no errors to start
+
   // validate name
+  if (!email.includes('@')) {
+    errors.invalidEmail = "Please enter a valid email";
+    console.log(errors);
+  }
   
   // check if email is already taken
-
+  
+  if (userData.hasOwnProperty(email)) {
+    errors.emailTaken = "Email is already taken";
+    console.log(errors);
+  }
   // check if passwords match
   if (req.body.psw !== req.body.confirmPsw) {
     errors.passwordMismatch = "Passwords do not match";
