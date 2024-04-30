@@ -118,6 +118,7 @@
             errors = JSON.parse(params.get('errors'));
             params.delete('errors');
         }
+        // Function to display errors GPT helped
         function ErrorLogin() {
             for (let key in errors) {
                 const inputField = document.querySelector(`[name="${key}"]`);

@@ -1,19 +1,21 @@
-
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration</title>
     <style>
         /* Global box-sizing */
-        * {box-sizing: border-box;}
+        * {
+            box-sizing: border-box;
+        }
 
         /* Container for the registration form */
-        body{
-          background-color: rgba(0, 0, 0, 0.532);
+        body {
+            background-color: rgba(0, 0, 0, 0.532);
         }
+
         .container {
             max-width: 600px;
             margin: 20px auto;
@@ -21,11 +23,12 @@
             background-color: rgba(0, 0, 0, 0.116);
             border-radius: 8px;
             box-shadow: 0 0 10px rgb(0, 0, 0);
-            
+
         }
 
         /* Full-width input fields */
-        input[type=text], input[type=password] {
+        input[type=text],
+        input[type=password] {
             width: 100%;
             padding: 12px;
             margin: 5px 0 15px 0;
@@ -61,12 +64,13 @@
 
         /* Add a blue text color to links */
         a {
-            color:rgb(28, 74, 225);
+            color: rgb(28, 74, 225);
             text-decoration: underline;
-            
+
         }
-        p{
-          font-size: 17px;
+
+        p {
+            font-size: 17px;
         }
 
         /* Set a grey background color and center the text of the "sign in" section */
@@ -76,41 +80,55 @@
 
         /* Logo styling */
         .logo-container {
-          max-width: 400px;
+            max-width: 400px;
             margin: 0 auto;
-            
+
             padding: 20px;
             border-radius: 8px;
-           
+
             display: flex;
             flex-direction: column;
             align-items: center;
         }
 
         .logo {
-          border: 1px solid #ddd;
-      border-radius: 4px;
-      padding: 5px;
-      width: 300px;
-      margin-bottom: 20px;
-      box-shadow: 0 0 5px 1px white;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 5px;
+            width: 300px;
+            margin-bottom: 20px;
+            box-shadow: 0 0 5px 1px white;
         }
-        .error-message{
+
+        .error-message {
             color: rgba(255, 55, 0);
         }
-      
-        
+        #generatePasswordBtn {
+    /* Add your custom styling here */
+    background-color: #007b4a;
+    color: white;
+    border: none;
+    border-radius: 4px;
+    padding: 10px 20px;
+    cursor: pointer;
+    
+}
+
+#generatePasswordBtn:hover {
+    background-color: #04AA6D;
+}
+
     </style>
     <script>
-      // get the query string into a easy to use object
-      const params = (new URL(document.location)).searchParams;
-      let errors = {};
-      if(params.has('errors')) {
-          errors = JSON.parse(params.get('errors'));
-          params.delete('errors');
-      }
-      // Function to display errors
-      function ErrorRegister() {
+        // get the query string into a easy to use object
+        const params = (new URL(document.location)).searchParams;
+        let errors = {};
+        if (params.has('errors')) {
+            errors = JSON.parse(params.get('errors'));
+            params.delete('errors');
+        }
+        // Function to display errors
+        function ErrorRegister() {
             for (let key in errors) {
                 const inputField = document.querySelector(`[name="${key}"]`);
                 const errorSpan = document.createElement('span');
@@ -119,29 +137,38 @@
                 inputField.insertAdjacentElement('afterend', errorSpan);
             }
         }
-                window.onload = function () {
-                    ErrorRegister();
-                };
-                // Function to generate a random password
-      function generateRandomPassword(length) {
-          const charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
-          let password = '';
-          for (let i = 0; i < length; i++) {
-              const randomIndex = Math.floor(Math.random() * charset.length);
-              password += charset[randomIndex];
-          }
-          return password;
-      }
-      const randomPassword = generateRandomPassword(10);
-console.log(randomPassword);
-      
-     
-      </script>
+        window.onload = function () {
+            ErrorRegister();
+        };
+        // IR3!!!! Function to generate a random password
+        function RandomPassword(length) {
+            const charset = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+            let password = '';
+            for (let i = 0; i < length; i++) {
+                const randomIndex = Math.floor(Math.random() * charset.length);
+                password += charset[randomIndex];
+            }
+            return password;
+        }
+        // Function to make random password pop up on page
+        function generateRandomPassword() {
+            const passwordField = document.getElementById('psw');
+            const confirmPasswordField = document.getElementById('confirmPsw');
+            const randomPassword = RandomPassword(10);
+            passwordField.value = randomPassword;
+            confirmPasswordField.value = randomPassword;
+        }
+        //const randomPassword = RandomPassword(10);
+        //console.log(randomPassword);
+
+
+    </script>
 </head>
+
 <body>
-  <script>
-    document.write(`<form action="processRegister?${params.toString()}" method="POST">`);
-</script>
+    <script>
+        document.write(`<form action="processRegister?${params.toString()}" method="POST">`);
+    </script>
     <div class="container">
         <div class="logo-container">
             <img src="./images/NikeAdidas.jpg" alt="Logo" class="logo">
@@ -152,24 +179,29 @@ console.log(randomPassword);
 
         <label for="email"><b>Email</b></label>
         <input type="text" placeholder="Enter Email" name="email" id="email" required>
-<br>
-    </br>  
+        <br>
+        </br>
         <label for="psw"><b>Password</b></label>
         <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
-<br>
-</br>
+        
+        <br>
+        </br>
         <label for="confirmPsw"><b>Repeat Password</b></label>
         <input type="password" placeholder="Repeat Password" name="confirmPsw" id="confirmPsw" required>
-<br>
-</br>
+        <button type="button" id="generatePasswordBtn" onclick="generateRandomPassword()">Generate Random Password</button>
+        <br>
+        </br>
         <hr>
 
         <button type="submit" class="registerbtn">Register</button>
     </div>
 
     <div class="container signin">
-        <p>Already have an account? <script>document.write(`<a href="login.html?${params.toString()}">Sign in</a>`)</script>.</p>
-        
+        <p>Already have an account?
+            <script>document.write(`<a href="login.html?${params.toString()}">Sign in</a>`)</script>.
+        </p>
+
     </div>
 </body>
+
 </html>

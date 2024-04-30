@@ -70,7 +70,7 @@ app.post('/processRegister', function (req, res, next) {
   const errors = {}; // assume no errors to start
 
   // validate name
-  if (!email.includes('@')) {
+  if (!email.includes('@') || !email.includes('.com')) {
     errors.email = "Please enter a valid email";
   }
   
