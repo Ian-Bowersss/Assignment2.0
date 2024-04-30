@@ -6,12 +6,12 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Registration</title>
     <style>
-        /* Global box-sizing */
+        
         * {
             box-sizing: border-box;
         }
 
-        /* Container for the registration form */
+        
         body {
             background-color: rgba(0, 0, 0, 0.532);
         }
@@ -24,9 +24,10 @@
             border-radius: 8px;
             box-shadow: 0 0 10px rgb(0, 0, 0);
 
+
         }
 
-        /* Full-width input fields */
+        
         input[type=text],
         input[type=password] {
             width: 100%;
@@ -38,14 +39,14 @@
             box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
         }
 
-        /* Overwrite default styles of hr */
+        
         hr {
             border: none;
             border-top: 1px solid #f1f1f1;
             margin: 25px 0;
         }
 
-        /* Set a style for the submit/register button */
+        
         .registerbtn {
             background-color: #04AA6D;
             color: white;
@@ -62,7 +63,7 @@
             background-color: #007B5E;
         }
 
-        /* Add a blue text color to links */
+        
         a {
             color: rgb(28, 74, 225);
             text-decoration: underline;
@@ -71,14 +72,15 @@
 
         p {
             font-size: 17px;
+
         }
 
-        /* Set a grey background color and center the text of the "sign in" section */
+        
         .signin {
             text-align: center;
         }
 
-        /* Logo styling */
+        
         .logo-container {
             max-width: 400px;
             margin: 0 auto;
@@ -103,21 +105,21 @@
         .error-message {
             color: rgba(255, 55, 0);
         }
+
         #generatePasswordBtn {
-    /* Add your custom styling here */
-    background-color: #007b4a;
-    color: white;
-    border: none;
-    border-radius: 4px;
-    padding: 10px 20px;
-    cursor: pointer;
-    
-}
 
-#generatePasswordBtn:hover {
-    background-color: #04AA6D;
-}
+            background-color: #007b4a;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            cursor: pointer;
 
+        }
+
+        #generatePasswordBtn:hover {
+            background-color: #04AA6D;
+        }
     </style>
     <script>
         // get the query string into a easy to use object
@@ -137,6 +139,7 @@
                 inputField.insertAdjacentElement('afterend', errorSpan);
             }
         }
+        //Load errors on page 
         window.onload = function () {
             ErrorRegister();
         };
@@ -150,7 +153,7 @@
             }
             return password;
         }
-        // Function to make random password pop up on page
+        // Function to make random password pop up on page (GPT helped)
         function generateRandomPassword() {
             const passwordField = document.getElementById('psw');
             const confirmPasswordField = document.getElementById('confirmPsw');
@@ -158,9 +161,7 @@
             passwordField.value = randomPassword;
             confirmPasswordField.value = randomPassword;
         }
-        //const randomPassword = RandomPassword(10);
-        //console.log(randomPassword);
-
+        
 
     </script>
 </head>
@@ -183,12 +184,13 @@
         </br>
         <label for="psw"><b>Password</b></label>
         <input type="password" placeholder="Enter Password" name="psw" id="psw" required>
-        
+
         <br>
         </br>
         <label for="confirmPsw"><b>Repeat Password</b></label>
         <input type="password" placeholder="Repeat Password" name="confirmPsw" id="confirmPsw" required>
-        <button type="button" id="generatePasswordBtn" onclick="generateRandomPassword()">Generate Random Password</button>
+        <button type="button" id="generatePasswordBtn" onclick="generateRandomPassword()">Generate Random
+            Password</button>
         <br>
         </br>
         <hr>

@@ -34,7 +34,6 @@ app.all('*', function (request, response, next) {
 
 app.post('/processLogin', function (req, res, next) {
   // Process login form POST and redirect to logged in page if ok, back to login page if not
-  //res.json(request.body);
   console.log(req.body, req.query);
   // Process login form POST and redirect to invoice in page if ok, back to login page 
   const params = new URLSearchParams(req.query);
@@ -69,13 +68,12 @@ app.post('/processRegister', function (req, res, next) {
 
   const errors = {}; // assume no errors to start
 
-  // validate name
+  // validate email
   if (!email.includes('@') || !email.includes('.com')) {
     errors.email = "Please enter a valid email";
   }
   
   // check if email is already taken
-  
   if (userData.hasOwnProperty(email)) {
     errors.email = "Email is already taken";
   }
@@ -85,19 +83,17 @@ app.post('/processRegister', function (req, res, next) {
     errors.confirmPsw = "Passwords do not match";
   }
 
-  // if errors, send back to registration page to fix otherwise send to invoice
+  // if errors, send back to registration page to fix if not send to invoice
   if (Object.keys(errors).length > 0) {
     params.append('errors', JSON.stringify(errors));
     res.redirect('./register.html?' + params.toString());
   } else {
-    //Save register data
+    //Save register data in user_date
     let email = req.body.email;
     userData[email] = {};
     userData[email].password = req.body.psw;
     // write user_data JSON to file
     fs.writeFileSync(userDataFile, JSON.stringify(userData));
-
-    // decrease inventory here ** move to when invoice is created **
 
     
     res.redirect('./invoice.html?' + params.toString());

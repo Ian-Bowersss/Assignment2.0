@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <style>
-        /* Container for the whole login form */
         body {
             background-color: rgba(0, 0, 0, 0.532);
         }
@@ -23,7 +22,7 @@
             align-items: center;
         }
 
-        /* Center the avatar image inside this container */
+
         .avatar {
             border: 1px solid #ddd;
             border-radius: 4px;
@@ -35,7 +34,7 @@
         }
 
 
-        /* Full-width inputs */
+
         input[type=text],
         input[type=password] {
             width: 100%;
@@ -46,7 +45,7 @@
             box-sizing: border-box;
         }
 
-        /* Set a style for all buttons */
+
         button {
             background-color: #04AA6D;
             color: black;
@@ -61,21 +60,20 @@
             text-transform: uppercase;
         }
 
-        /* Add a hover effect for buttons */
+
         button:hover {
             opacity: 0.8;
         }
 
-        /* Add padding to containers */
+
         .container {
             padding: 0 20px;
             margin-top: 50px;
 
         }
 
-        /* The "Forgot password" text */
+
         .psw {
-            /*float: right;*/
             margin-bottom: 100px;
             margin-left: 40px;
             font-size: 18px;
@@ -85,7 +83,7 @@
 
         }
 
-        /* Clear floats after the cancel button */
+
         .cancelbtn {
             width: auto;
             padding: 10px 18px;
@@ -97,7 +95,7 @@
             margin-bottom: 70px;
         }
 
-        /* Style for the register link */
+
         .register-link {
             display: block;
             text-align: center;
@@ -105,9 +103,10 @@
             color: #04aa44;
             text-decoration: none;
         }
-        .error-message{
+
+        .error-message {
             color: rgb(255, 55, 0);
-            
+
         }
     </style>
     <script>
@@ -128,11 +127,11 @@
                 inputField.insertAdjacentElement('afterend', errorSpan);
             }
         }
-        
-                window.onload = function () {
-                    ErrorLogin();
-                };
-            
+        // Load error on page 
+        window.onload = function () {
+            ErrorLogin();
+        };
+
     </script>
 
 
@@ -149,7 +148,7 @@
                 <label for="email"><b>Email</b></label>
                 <input type="text" placeholder="Enter Email" name="email" required>
                 <br>
-            </br>
+                </br>
                 <label for="psw"><b>Password</b></label>
                 <input type="password" placeholder="Enter Password" name="password" required>
 
@@ -164,7 +163,7 @@
                     <script>document.write(`<a href="register.html?${params.toString()}">Register</a>`)</script>
                 </span>
             </div>
-           
+
         </form>
     </div>
 </body>
